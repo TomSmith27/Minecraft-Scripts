@@ -44,21 +44,30 @@ function HarvestColumn()
         CheckIfGrown()
         turtle.turnLeft()
     end
+
 end
 
 function Farm()
     for i = 0, x do
         HarvestColumn()
+        print("Finished Column #" , x)
         turtle.turnRight()
         turtle.forward()
         turtle.forward()
-        turn.turnRight()
+        turtle.turnRight()
         HarvestColumn()
+        print("Finished Column #" , x )
         turtle.turnLeft()
         turtle.forward()
         turtle.forward()
-        turn.turnLeft()
+        turtle.turnLeft()
     end
+    turtle.turnLeft()
+    for i = 0, x do
+        turtle.forward()
+        turtle.forward()
+    end
+    turtle.turnRight()
 end
 
 Farm()
