@@ -50,13 +50,13 @@ end
 function Farm()
     for i = 0, x do
         HarvestColumn()
-        print("Finished Column #" , x)
+        print("Finished Column #" , i)
         turtle.turnRight()
         turtle.forward()
         turtle.forward()
         turtle.turnRight()
         HarvestColumn()
-        print("Finished Column #" , x )
+        print("Finished Column #" , i )
         turtle.turnLeft()
         turtle.forward()
         turtle.forward()
@@ -64,6 +64,7 @@ function Farm()
     end
     turtle.turnLeft()
     for i = 0, x do
+        turtle.forward()
         turtle.forward()
         turtle.forward()
     end
