@@ -29,7 +29,7 @@ end
 
 function CheckIfGrown()
    local success, data = turtle.inspect()
-   if success and data.name == "minecraft:log"
+   if success and data.name == "minecraft:log" then
         HarvestTree()
    end
 
