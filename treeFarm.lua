@@ -1,4 +1,4 @@
-local x = 2
+local x = 1
 local y = 3
 
 function HarvestTree()
@@ -64,6 +64,8 @@ function Farm()
     end
     turtle.turnLeft()
     for i = 0, x do
+        turtle.forward()
+        turtle.forward()
         turtle.forward()
         turtle.forward()
         turtle.forward()
