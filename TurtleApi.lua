@@ -1,4 +1,4 @@
-function TryGetItem()
+function DigGoodItems()
     local success, data = turtle.inspect()
     if success then
         if data.name == "minecraft:stone"

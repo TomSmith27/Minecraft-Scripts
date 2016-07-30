@@ -1,14 +1,14 @@
 local args = { ... }
-local lvls = tonumber(args[1])
+local lvls = tonumber(args[1] or 1)
 
-os.loadAPI("Minecraft-Scripts\TurtleApi")
+os.loadAPI("Minecraft-Scripts/turtleApi")
 
 function MineLevel()
     turtle.digDown()
     turtle.down()
     for i = 0, 3 do
         turtle.turnLeft()
-        TryGetItem()
+        turtleApi.DigGoodItems()
     end
 end
 
