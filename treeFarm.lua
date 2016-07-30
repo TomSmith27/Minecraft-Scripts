@@ -34,17 +34,30 @@ function CheckIfGrown()
     end
 end
 
-function Farm() 
+function HarvestColumn()
+    for i = 0, y do
+        turtle.forward()
+        turtle.turnLeft()
+        CheckIfGrown()
+        turtle.turnRight()
+        turtle.turnRight()
+        CheckIfGrown()
+        turtle.turnLeft()
+    end
+end
+
+function Farm()
     for i = 0, x do
-        for j = 0, y do
-            turtle.forward()
-            turtle.turnLeft()
-            CheckIfGrown()
-            turtle.turnRight()
-            turtle.turnRight()
-            CheckIfGrown()
-            turtle.turnLeft()
-        end
+        HarvestColumn()
+        turtle.turnRight()
+        turtle.forward()
+        turtle.forward()
+        turn.turnRight()
+        HarvestColumn()
+        turtle.turnLeft()
+        turtle.forward()
+        turtle.forward()
+        turn.turnLeft()
     end
 end
 
