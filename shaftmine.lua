@@ -1,7 +1,11 @@
+if os.loadAPI("Minecraft-Scripts/turtleApi") == false then
+    print("Failed to load turtleApi")
+    return
+    end
+
 local args = { ... }
 local lvls = tonumber(args[1] or 1)
 
-os.loadAPI("Minecraft-Scripts/turtleApi")
 
 function MineLevel()
     turtle.digDown()
