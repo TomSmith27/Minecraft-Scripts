@@ -28,19 +28,24 @@ function HarvestTree()
 end
 
 function CheckIfGrown()
-   local success, data = turtle.inspect()
-   if success and data.name == "minecraft:log" then
+    local success, data = turtle.inspect()
+    if success and data.name == "minecraft:log" then
         HarvestTree()
-   end
+    end
+end
 
-function Farm()
+function Farm() 
     for i = 0, x do
         for j = 0, y do
             turtle.forward()
-            turtle.left()
+            turtle.turnLeft()
             CheckIfGrown()
-            turtle.right()
-            turtle.right()
+            turtle.turnRight()
+            turtle.turnRight()
             CheckIfGrown()
-            turtle.left()
+            turtle.turnLeft()
+        end
     end
+end
+
+Farm()
