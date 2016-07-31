@@ -1,6 +1,6 @@
 local startblock = "IronChest:BlockIronChest"
 local pathblock = "minecraft:stonebrick"
-local waitTime = 120
+local waitTime = 300
 
 function HarvestTree()
     turtle.dig()
@@ -10,16 +10,24 @@ function HarvestTree()
         local success, data = turtle.inspectUp()
         --Dig up until there is nothing above the turtle
         if success then
+            --Try and get leaves
+            turtle.dig()
             turtle.digUp()
             turtle.up()
             treeHeight = treeHeight + 1
         end
     until(turtle.inspectUp() == false)
+    --When coming back down switch around to get leaves
+    turtle.turnLeft()
+    turtle.turnLeft()
     --Go back down to the stump
     for i = 1, treeHeight do
         turtle.digDown()
+        turtle.dig()
         turtle.down()
     end
+    turtle.turnLeft()
+    turtle.turnLeft()
     turtle.back()
     turtle.select(1)
     turtle.place()
