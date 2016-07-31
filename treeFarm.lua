@@ -1,5 +1,6 @@
 local startblock = "IronChest:BlockIronChest"
 local pathblock = "minecraft:stonebrick"
+local waitTime = 120
 
 function HarvestTree()
     turtle.dig()
@@ -52,12 +53,13 @@ function FollowPath()
     if success and data.name == pathblock then
         return true
     elseif success and data.name == startblock then
-        print("Done loop")
-        for i = 2, 15 do
+        print("Done loop now waiting for ", waitTime)
+        for i = 2, 16 do
             turtle.select(i)
             turtle.dropDown()
         end
-        sleep(120)
+        sleep(waitTime)
+        return true
     else
         turtle.back()
         turtle.turnRight()
