@@ -1,5 +1,5 @@
-local x = 1
-local y = 3
+local startblock = "IronChest:BlockIronChest"
+local pathblock = "minecraft:stonebrick"
 
 function HarvestTree()
     turtle.dig()
@@ -15,7 +15,7 @@ function HarvestTree()
         end
     until(turtle.inspectUp() == false)
     --Go back down to the stump
-    for i = 0, treeHeight do
+    for i = 1, treeHeight do
         turtle.digDown()
         turtle.down()
     end
@@ -35,6 +35,15 @@ end
 
 function Farm()
     while FollowPath() == true do
+        local success, data = turtle.inspectDown()
+        if success and data.name == startblock then
+            print("Done loop")
+            for i = 2, 15 do
+                turtle.select(i)
+                turtle.dropDown()
+            end
+            sleep(120)
+        end
         turtle.turnLeft()
         CheckIfGrown()
         turtle.turnRight()
@@ -49,14 +58,14 @@ function FollowPath()
     turtle.dig()
     turtle.forward()
     local success, data = turtle.inspectDown()
-    if success and data.name == "minecraft:stonebrick" then
+    if success and data.name == pathblock then
         return true
     else
         turtle.back()
         turtle.turnRight()
         turtle.forward()
         local success, data = turtle.inspectDown()
-        if success and data.name == "minecraft:stonebrick" then
+        if success and data.name == pathblock then
             return true
         else
             turtle.turnLeft()
@@ -64,7 +73,7 @@ function FollowPath()
             turtle.forward()
             turtle.forward()
             local success, data = turtle.inspectDown()
-            if success and data.name == "minecraft:stonebrick" then
+            if success and data.name == pathblock then
                 return true
             else
                 turtle.back()
