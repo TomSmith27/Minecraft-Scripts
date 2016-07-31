@@ -51,7 +51,7 @@ function FollowPath()
     local success, data = turtle.inspectDown()
     if success and data.name == pathblock then
         return true
-    elseif success and data.name == startblock
+    elseif success and data.name == startblock then
         print("Done loop")
         for i = 2, 15 do
             turtle.select(i)
@@ -79,7 +79,6 @@ function FollowPath()
                 print("No Valid path now stopping")
                 return false
             end
-
         end
     end
 end
