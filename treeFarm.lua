@@ -57,8 +57,8 @@ function FollowPath()
             turtle.select(i)
             turtle.dropDown()
         end
-    else
         sleep(120)
+    else
         turtle.back()
         turtle.turnRight()
         turtle.forward()
