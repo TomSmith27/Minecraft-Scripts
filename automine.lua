@@ -1,6 +1,7 @@
 for i = 0, 5 do
     shell.run("shaftmine", 50)
-    turtle.forward()
-    turtle.forward()
-    turtle.forward()
+    for j = 0, 3 do
+        turtle.dig()
+        turtle.forward()
+    end
 end
