@@ -36,14 +36,7 @@ end
 function Farm()
     while FollowPath() == true do
         local success, data = turtle.inspectDown()
-        if success and data.name == startblock then
-            print("Done loop")
-            for i = 2, 15 do
-                turtle.select(i)
-                turtle.dropDown()
-            end
-            sleep(120)
-        end
+
         turtle.turnLeft()
         CheckIfGrown()
         turtle.turnRight()
@@ -60,13 +53,20 @@ function FollowPath()
     local success, data = turtle.inspectDown()
     if success and data.name == pathblock then
         return true
-    else
+    elseif
         turtle.back()
         turtle.turnRight()
         turtle.forward()
         local success, data = turtle.inspectDown()
         if success and data.name == pathblock then
             return true
+        elseif  success and data.name == startblock then
+            print("Done loop")
+            for i = 2, 15 do
+                turtle.select(i)
+                turtle.dropDown()
+            end
+            sleep(120)
         else
             turtle.turnLeft()
             turtle.turnLeft()
@@ -75,6 +75,7 @@ function FollowPath()
             local success, data = turtle.inspectDown()
             if success and data.name == pathblock then
                 return true
+            else
             else
                 turtle.back()
                 turtle.turnRight()
