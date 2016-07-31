@@ -22,7 +22,6 @@ function HarvestTree()
     turtle.back()
     turtle.select(1)
     turtle.place()
-    turtle.up()
     --Done harvesting
     print("Harvested Tree with height of ", treeHeight)
 end
@@ -34,43 +33,53 @@ function CheckIfGrown()
     end
 end
 
-function HarvestColumn()
-    for i = 0, y do
-        turtle.forward()
-        turtle.turnLeft()
-        CheckIfGrown()
-        turtle.turnRight()
-        turtle.turnRight()
-        CheckIfGrown()
-        turtle.turnLeft()
-    end
-
-end
-
 function Farm()
-    for i = 0, x do
-        HarvestColumn()
-        print("Finished Column #" , i)
-        turtle.turnRight()
-        turtle.forward()
-        turtle.forward()
-        turtle.turnRight()
-        HarvestColumn()
-        print("Finished Column #" , i )
+    while FollowPath() == true do
         turtle.turnLeft()
-        turtle.forward()
-        turtle.forward()
+        CheckIfGrown()
+        turtle.turnRight()
+        turtle.turnRight()
+        CheckIfGrown()
         turtle.turnLeft()
     end
-    turtle.turnLeft()
-    for i = 0, x do
-        turtle.forward()
-        turtle.forward()
-        turtle.forward()
-        turtle.forward()
-        turtle.forward()
-    end
-    turtle.turnRight()
 end
 
-Farm()
+
+function FollowPath()
+    turtle.dig()
+    turtle.forward()
+    local success, data = turtle.inspectDown()
+    if success and data.name == "minecraft:stonebrick" then
+        return true
+    else
+        turtle.back()
+        turtle.turnRight()
+        turtle.forward()
+        local success, data = turtle.inspectDown()
+        if success and data.name == "minecraft:stonebrick" then
+            return true
+        else
+            turtle.turnLeft()
+            turtle.turnLeft()
+            turtle.forward()
+            turtle.forward()
+            local success, data = turtle.inspectDown()
+            if success and data.name == "minecraft:stonebrick" then
+                return true
+            else
+                print("No Valid path now stopping")
+                return false
+            end
+
+        end
+    end
+end
+
+
+while(true) do
+    if FollowPath() == false then
+        return
+    end
+end
+
+--Farm()
