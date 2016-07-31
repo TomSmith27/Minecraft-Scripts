@@ -73,7 +73,7 @@ function FollowPath()
         return true
     elseif success and data.name == startblock then
         print("Done loop now waiting for ", waitTime)
-        for i = 2, 16 do
+        for i = 3, 16 do
             turtle.select(i)
             turtle.dropDown()
         end
