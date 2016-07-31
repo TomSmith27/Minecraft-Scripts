@@ -36,6 +36,7 @@ function HarvestTree()
 end
 
 function CheckIfGrown()
+    turtle.suck()
     local success, data = turtle.inspect()
     if success and data.name == "minecraft:log" then
         HarvestTree()
