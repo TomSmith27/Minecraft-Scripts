@@ -67,6 +67,8 @@ function FollowPath()
             if success and data.name == "minecraft:stonebrick" then
                 return true
             else
+                turtle.back()
+                turtle.turnRight()
                 print("No Valid path now stopping")
                 return false
             end
@@ -76,10 +78,4 @@ function FollowPath()
 end
 
 
-while(true) do
-    if FollowPath() == false then
-        return
-    end
-end
-
---Farm()
+Farm()
