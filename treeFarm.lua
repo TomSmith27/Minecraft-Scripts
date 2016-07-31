@@ -54,6 +54,7 @@ function Farm()
             turtle.select(2)
             turtle.refuel(5)
         end
+        turtle.suck()
         turtle.turnLeft()
         CheckIfGrown()
         turtle.turnRight()
