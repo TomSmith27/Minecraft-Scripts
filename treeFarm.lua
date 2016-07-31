@@ -50,6 +50,10 @@ end
 
 function Farm()
     while FollowPath() == true do
+        if turtle.getFuelLevel() < 100 then
+            turtle.select(2)
+            turtle.refuel(5)
+        end
         turtle.turnLeft()
         CheckIfGrown()
         turtle.turnRight()
