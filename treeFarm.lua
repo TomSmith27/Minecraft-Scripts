@@ -40,6 +40,11 @@ function CheckIfGrown()
     local success, data = turtle.inspect()
     if success and data.name == "minecraft:log" then
         HarvestTree()
+    elseif success == false then
+        turtle.select(1)
+        if turtle.getItemCount(1) > 10 then
+            turtle.place()
+        end
     end
 end
 
