@@ -54,13 +54,15 @@ function Farm()
             turtle.select(2)
             turtle.refuel(5)
         end
-        turtle.suck()
-        turtle.turnLeft()
-        CheckIfGrown()
-        turtle.turnRight()
-        turtle.turnRight()
-        CheckIfGrown()
-        turtle.turnLeft()
+        if turtle.getItemDetail(1).name == "minecraft:sapling" then
+            turtle.suck()
+            turtle.turnLeft()
+            CheckIfGrown()
+            turtle.turnRight()
+            turtle.turnRight()
+            CheckIfGrown()
+            turtle.turnLeft()
+        end
     end
 end
 
