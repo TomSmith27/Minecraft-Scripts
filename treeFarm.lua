@@ -54,7 +54,7 @@ function Farm()
             turtle.select(2)
             turtle.refuel(5)
         end
-        if turtle.getItemDetail(1).name == "minecraft:sapling" then
+        if turtle.getItemCount(1) > 0 and turtle.getItemDetail(1).name == "minecraft:sapling" then
             turtle.suck()
             turtle.turnLeft()
             CheckIfGrown()
